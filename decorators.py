@@ -10,6 +10,7 @@ def logger(func):
         end_time = time.time()
         result_time = end_time - start_time
         print(f"Окончание работы функции: {func.__name__}, время выполнения: {result_time}")
+        return result
 
     return wrapper
 
@@ -18,15 +19,16 @@ def logger(func):
 def summ(*args) -> Union[int, float]:
     # def summ(*args) :
     result = 0
-    for i in args:
-        if type(i) == int or float:
-            result += i
+    for arg in args:
+        if isinstance(arg, int) or isinstance(arg, float):
+            result += arg
         # else: raise Exception.TypeError
     return result
 
 
 if __name__ == '__main__':
-    print(summ(1, 2, 3, 4))
+    function = summ(1, 2, 3, 4.758654)
+    print(function)
     # function = summ(1,2,3,4,5)
     # print(function)
     # print(summ(1,2,3,4,5,"Hello world"))
